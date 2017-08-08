@@ -1,6 +1,14 @@
 const main = document.body.querySelector("main");
 // const mainDivContainer = document.querySelector("mainDivContainer");
-const url = ("https://api.github.com/users/cayates");
+
+// these are all of my fetches that are being used to pull from github
+
+fetch("https://api.github.com/users/cayates")
+.then(loadDatabase)
+.then(headerTitleSection)
+.then(basicSection)
+.then(theStory)
+.then(image)
 
 let vCard = []
 
@@ -20,7 +28,7 @@ function loadDatabase(data) {
 function headerTitleSection (vCard){
     const div = document.createElement("div");
     div.className = "header";
-    div.innerHTML = `<h1>${vCard.name}</h1>`;
+    div.innerHTML = `<p>${vCard.name}</p>`;
     main.appendChild(div);
     return vCard;
 }
@@ -72,13 +80,6 @@ function image(vCard){
     return vCard;
 }
 
-// these are all of my fetches that are being used to pull from github (variable created up top to store the github url)
 
-fetch(url)
-.then(loadDatabase)
-.then(headerTitleSection)
-.then(basicSection)
-.then(theStory)
-.then(image)
 
 
